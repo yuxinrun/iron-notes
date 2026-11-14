@@ -1,0 +1,480 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   IRON NOTES — Design Tokens
+   Premium Fitness Editorial / Sports Science / Minimalist
+   ============================================================ */
+:root {
+  --paper: #f7f5f0;
+  --paper-2: #efebe3;
+  --white: #ffffff;
+  --ink: #17191b;
+  --ink-2: #343a3f;
+  --muted: #6c737a;
+  --line: #e2ded5;
+  --brand: #e0532a;
+  --brand-dark: #b83c19;
+  --brand-soft: #fbe8df;
+  --carbon: #14171a;
+  --steel: #8b959d;
+
+  --data1: #2f6f6b; /* 训练容量 / 有效刺激 */
+  --data2: #d98324; /* 强度 / 负荷 */
+  --data3: #4c6ef5; /* 恢复 / 睡眠 */
+  --data4: #a84a6a; /* 营养 / 蛋白质 */
+  --data5: #7c8a3c; /* 长期趋势 */
+
+  --font-cn: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei", "Source Han Sans SC", system-ui, -apple-system, sans-serif;
+  --font-display: "Barlow Condensed", "Arial Narrow", "Helvetica Neue", Impact, sans-serif;
+
+  --shell: 1240px;
+  --header-h: 72px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-cn);
+  font-size: 16px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--brand);
+  color: #fff;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* ---------- Layout helpers ---------- */
+.shell {
+  width: 100%;
+  max-width: var(--shell);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+@media (max-width: 640px) {
+  .shell {
+    padding-inline: 18px;
+  }
+}
+
+.section {
+  padding-block: 88px;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding-block: 56px;
+  }
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brand);
+}
+
+.eyebrow-light {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.02;
+  text-transform: uppercase;
+}
+
+.hairline {
+  height: 1px;
+  background: var(--line);
+  border: 0;
+}
+
+.grain {
+  background-image: radial-gradient(rgba(20, 23, 26, 0.045) 0.7px, transparent 0.7px);
+  background-size: 6px 6px;
+}
+
+.grid-lines {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* ---------- Cards & surfaces ---------- */
+.card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 38px rgba(20, 23, 26, 0.1);
+  border-color: rgba(224, 83, 42, 0.35);
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 3px 11px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--muted);
+  background: var(--white);
+  white-space: nowrap;
+}
+
+.tag-brand {
+  color: var(--brand-dark);
+  background: var(--brand-soft);
+  border-color: rgba(224, 83, 42, 0.24);
+}
+
+.tag-dark {
+  color: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 46px;
+  padding: 0 22px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--brand);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--brand-dark);
+}
+
+.btn-dark {
+  background: var(--carbon);
+  color: #fff;
+}
+.btn-dark:hover {
+  background: #2b3136;
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--line);
+  color: var(--ink);
+}
+.btn-outline:hover {
+  border-color: var(--ink);
+}
+
+.btn-ghost-light {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.28);
+  color: #fff;
+}
+.btn-ghost-light:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.btn-sm {
+  min-height: 36px;
+  padding: 0 14px;
+  font-size: 13px;
+}
+
+/* ---------- Section heading ---------- */
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 34px;
+}
+
+.section-title {
+  font-size: clamp(26px, 3.2vw, 40px);
+  font-weight: 750;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin: 10px 0 0;
+}
+
+.section-desc {
+  color: var(--muted);
+  font-size: 14.5px;
+  margin: 10px 0 0;
+  max-width: 620px;
+}
+
+@media (max-width: 768px) {
+  .section-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+/* ---------- Article typography ---------- */
+.prose-iron {
+  color: var(--ink-2);
+  font-size: 16.5px;
+  line-height: 1.95;
+  letter-spacing: 0.01em;
+}
+
+.prose-iron > *:first-child {
+  margin-top: 0;
+}
+
+.prose-iron h2 {
+  font-size: 25px;
+  font-weight: 750;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 56px 0 18px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 100px;
+}
+
+.prose-iron h2 .h2-index {
+  font-family: var(--font-display);
+  font-size: 15px;
+  color: var(--brand);
+  margin-right: 12px;
+  letter-spacing: 0.12em;
+}
+
+.prose-iron h3 {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin: 34px 0 12px;
+  scroll-margin-top: 100px;
+}
+
+.prose-iron h4 {
+  font-size: 16.5px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.prose-iron p {
+  margin: 0 0 18px;
+}
+
+.prose-iron strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.prose-iron em {
+  font-style: normal;
+  color: var(--brand-dark);
+  border-bottom: 1px dashed rgba(224, 83, 42, 0.45);
+}
+
+.prose-iron a:not(.no-underline) {
+  color: var(--brand-dark);
+  border-bottom: 1px solid rgba(224, 83, 42, 0.4);
+}
+.prose-iron a:hover {
+  border-bottom-color: var(--brand-dark);
+}
+
+.prose-iron ul,
+.prose-iron ol {
+  margin: 0 0 22px;
+  padding-left: 22px;
+}
+
+.prose-iron ul {
+  list-style: none;
+}
+.prose-iron ul > li {
+  position: relative;
+  margin-bottom: 9px;
+}
+.prose-iron ul > li::before {
+  content: "";
+  position: absolute;
+  left: -18px;
+  top: 0.78em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--brand);
+}
+
+.prose-iron ol > li {
+  margin-bottom: 10px;
+  padding-left: 4px;
+}
+.prose-iron ol > li::marker {
+  color: var(--brand);
+  font-weight: 700;
+  font-family: var(--font-display);
+}
+
+.prose-iron blockquote {
+  margin: 30px 0;
+  padding: 18px 24px;
+  border-left: 3px solid var(--brand);
+  background: var(--white);
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.75;
+}
+.prose-iron blockquote p {
+  margin: 0;
+}
+
+.prose-iron table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 26px 0;
+  font-size: 14.5px;
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.prose-iron thead {
+  background: var(--carbon);
+  color: #fff;
+}
+.prose-iron th {
+  padding: 11px 14px;
+  text-align: left;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.prose-iron td {
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+.prose-iron tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.prose-iron hr {
+  border: 0;
+  height: 1px;
+  background: var(--line);
+  margin: 40px 0;
+}
+
+.prose-iron code {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.9em;
+  background: var(--paper-2);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--brand-dark);
+}
+
+.prose-iron pre {
+  background: var(--carbon);
+  color: #e8e6e1;
+  padding: 18px 20px;
+  border-radius: 10px;
+  overflow-x: auto;
+  font-size: 13.5px;
+  line-height: 1.7;
+  margin: 24px 0;
+}
+.prose-iron pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
+}
+
+/* font-size control */
+.prose-iron[data-size="s"] { font-size: 15px; }
+.prose-iron[data-size="m"] { font-size: 16.5px; }
+.prose-iron[data-size="l"] { font-size: 18.5px; }
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--paper);
+}
+::-webkit-scrollbar-thumb {
+  background: #cfcac0;
+  border-radius: 8px;
+  border: 2px solid var(--paper);
+}
+
+/* ---------- Utilities ---------- */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.loading-dots::after {
+  content: "…";
+}
